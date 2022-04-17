@@ -12,7 +12,11 @@ import sys
 
 # Set target directory from command line parameter
 
-inputdir = sys.argv[1]
+if len(sys.argv) != 2:
+	print "Usage:  phpscan.py /path/to/somephp/"
+	sys.exit(0)
+else:
+	inputdir = sys.argv[1]
 
 
 # Define strings that indicate interesting areas of a PHP script
@@ -51,5 +55,3 @@ for root, dirs, files in os.walk(inputdir):
 	for file in files:
 		if file.endswith(".php"):
 			scanFile(os.path.join(root, file))
-
-
